@@ -1,0 +1,266 @@
+---- Minecraft Crash Report ----
+// I let you down. Sorry :(
+
+Time: 4/7/20 10:21 PM
+Description: Watching Server
+
+java.lang.Error
+	at java.util.Spliterator.getExactSizeIfKnown(Spliterator.java:408)
+	at java.util.stream.AbstractPipeline.copyIntoWithCancel(AbstractPipeline.java:497)
+	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:485)
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:471)
+	at java.util.stream.MatchOps$MatchOp.evaluateSequential(MatchOps.java:230)
+	at java.util.stream.MatchOps$MatchOp.evaluateSequential(MatchOps.java:196)
+	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.util.stream.ReferencePipeline.noneMatch(ReferencePipeline.java:459)
+	at wp.d(SourceFile:838)
+	at xb.a(SourceFile:381)
+	at xb$$Lambda$2521/671966189.accept(Unknown Source)
+	at it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap$1.forEach(Long2ObjectLinkedOpenHashMap.java:1661)
+	at com.google.common.collect.Iterables$UnmodifiableIterable.forEach(Iterables.java:105)
+	at xb.o(SourceFile:371)
+	at xb.a(SourceFile:340)
+	at xd.a(SourceFile:324)
+	at net.minecraft.server.MinecraftServer.b(SourceFile:854)
+	at wd.b(SourceFile:347)
+	at net.minecraft.server.MinecraftServer.a(SourceFile:793)
+	at net.minecraft.server.MinecraftServer.run(SourceFile:655)
+	at java.lang.Thread.run(Thread.java:748)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Server Watchdog
+Stacktrace:
+	at java.util.Spliterator.getExactSizeIfKnown(Spliterator.java:408)
+	at java.util.stream.AbstractPipeline.copyIntoWithCancel(AbstractPipeline.java:497)
+	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:485)
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:471)
+	at java.util.stream.MatchOps$MatchOp.evaluateSequential(MatchOps.java:230)
+	at java.util.stream.MatchOps$MatchOp.evaluateSequential(MatchOps.java:196)
+	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.util.stream.ReferencePipeline.noneMatch(ReferencePipeline.java:459)
+	at wp.d(SourceFile:838)
+	at xb.a(SourceFile:381)
+	at xb$$Lambda$2521/671966189.accept(Unknown Source)
+	at it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap$1.forEach(Long2ObjectLinkedOpenHashMap.java:1661)
+	at com.google.common.collect.Iterables$UnmodifiableIterable.forEach(Iterables.java:105)
+	at xb.o(SourceFile:371)
+	at xb.a(SourceFile:340)
+	at xd.a(SourceFile:324)
+	at net.minecraft.server.MinecraftServer.b(SourceFile:854)
+	at wd.b(SourceFile:347)
+	at net.minecraft.server.MinecraftServer.a(SourceFile:793)
+
+-- Thread Dump --
+Details:
+	Threads: "SIGHUP handler" Id=366 RUNNABLE
+
+
+"User Authenticator #9" Id=364 RUNNABLE
+	at org.apache.logging.log4j.core.appender.rolling.RollingFileManager.checkRollover(RollingFileManager.java:217)
+	-  locked org.apache.logging.log4j.core.appender.rolling.RollingRandomAccessFileManager@8a4057c
+	at org.apache.logging.log4j.core.appender.RollingRandomAccessFileAppender.append(RollingRandomAccessFileAppender.java:207)
+	at org.apache.logging.log4j.core.config.AppenderControl.tryCallAppender(AppenderControl.java:156)
+	at org.apache.logging.log4j.core.config.AppenderControl.callAppender0(AppenderControl.java:129)
+	at org.apache.logging.log4j.core.config.AppenderControl.callAppenderPreventRecursion(AppenderControl.java:120)
+	at org.apache.logging.log4j.core.config.AppenderControl.callAppender(AppenderControl.java:84)
+	at org.apache.logging.log4j.core.config.LoggerConfig.callAppenders(LoggerConfig.java:448)
+	at org.apache.logging.log4j.core.config.LoggerConfig.processLogEvent(LoggerConfig.java:433)
+	...
+
+
+"User Authenticator #6" Id=357 RUNNABLE
+	at java.lang.Exception.<init>(Exception.java:66)
+	at java.io.IOException.<init>(IOException.java:58)
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(FileOutputStream.java:326)
+	at java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:82)
+	at java.io.BufferedOutputStream.write(BufferedOutputStream.java:126)
+	-  locked java.io.BufferedOutputStream@663ea18
+	at java.io.PrintStream.write(PrintStream.java:480)
+	-  locked java.io.PrintStream@25c6e0c
+	at org.apache.logging.log4j.core.util.CloseShieldOutputStream.write(CloseShieldOutputStream.java:53)
+	...
+
+
+"Netty Epoll Server IO #3" Id=63 RUNNABLE
+	at io.netty.channel.epoll.Native.epollWait0(Native Method)
+	at io.netty.channel.epoll.Native.epollWait(Native.java:114)
+	at io.netty.channel.epoll.EpollEventLoop.epollWait(EpollEventLoop.java:239)
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:256)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:884)
+	at java.lang.Thread.run(Thread.java:748)
+
+
+"Netty Epoll Server IO #2" Id=31 RUNNABLE (in native)
+	at io.netty.channel.epoll.Native.epollWait0(Native Method)
+	at io.netty.channel.epoll.Native.epollWait(Native.java:114)
+	at io.netty.channel.epoll.EpollEventLoop.epollWait(EpollEventLoop.java:239)
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:256)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:884)
+	at java.lang.Thread.run(Thread.java:748)
+
+
+"Netty Epoll Server IO #1" Id=30 RUNNABLE
+	at io.netty.channel.epoll.Native.epollWait0(Native Method)
+	at io.netty.channel.epoll.Native.epollWait(Native.java:114)
+	at io.netty.channel.epoll.EpollEventLoop.epollWait(EpollEventLoop.java:239)
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:256)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:884)
+	at java.lang.Thread.run(Thread.java:748)
+
+
+"Server Watchdog" Id=29 RUNNABLE
+	at sun.management.ThreadImpl.dumpThreads0(Native Method)
+	at sun.management.ThreadImpl.dumpAllThreads(ThreadImpl.java:454)
+	at wg.run(SourceFile:45)
+	at java.lang.Thread.run(Thread.java:748)
+
+
+"poi IO worker" Id=27 WAITING on java.lang.String@6f798251
+	at sun.misc.Unsafe.park(Native Method)
+	-  waiting on java.lang.String@6f798251
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+	at caz.c(SourceFile:124)
+	at caz.d(SourceFile:134)
+	at caz$$Lambda$2132/1285478151.run(Unknown Source)
+	at java.lang.Thread.run(Thread.java:748)
+
+
+"chunk IO worker" Id=26 WAITING on java.lang.String@6f798251
+	at sun.misc.Unsafe.park(Native Method)
+	-  waiting on java.lang.String@6f798251
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+	at caz.c(SourceFile:124)
+	at caz.d(SourceFile:134)
+	at caz$$Lambda$2132/1285478151.run(Unknown Source)
+	at java.lang.Thread.run(Thread.java:748)
+
+
+"poi IO worker" Id=25 WAITING on java.lang.String@6f798251
+	at sun.misc.Unsafe.park(Native Method)
+	-  waiting on java.lang.String@6f798251
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+	at caz.c(SourceFile:124)
+	at caz.d(SourceFile:134)
+	at caz$$Lambda$2132/1285478151.run(Unknown Source)
+	at java.lang.Thread.run(Thread.java:748)
+
+
+"chunk IO worker" Id=24 WAITING on java.lang.String@6f798251
+	at sun.misc.Unsafe.park(Native Method)
+	-  waiting on java.lang.String@6f798251
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+	at caz.c(SourceFile:124)
+	at caz.d(SourceFile:134)
+	at caz$$Lambda$2132/1285478151.run(Unknown Source)
+	at java.lang.Thread.run(Thread.java:748)
+
+
+"poi IO worker" Id=23 WAITING on java.lang.String@6f798251
+	at sun.misc.Unsafe.park(Native Method)
+	-  waiting on java.lang.String@6f798251
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+	at caz.c(SourceFile:124)
+	at caz.d(SourceFile:134)
+	at caz$$Lambda$2132/1285478151.run(Unknown Source)
+	at java.lang.Thread.run(Thread.java:748)
+
+
+"chunk IO worker" Id=22 WAITING on java.lang.String@6f798251
+	at sun.misc.Unsafe.park(Native Method)
+	-  waiting on java.lang.String@6f798251
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+	at caz.c(SourceFile:124)
+	at caz.d(SourceFile:134)
+	at caz$$Lambda$2132/1285478151.run(Unknown Source)
+	at java.lang.Thread.run(Thread.java:748)
+
+
+"Netty Epoll Server IO #0" Id=19 RUNNABLE (in native)
+	at io.netty.channel.epoll.Native.epollWait0(Native Method)
+	at io.netty.channel.epoll.Native.epollWait(Native.java:114)
+	at io.netty.channel.epoll.EpollEventLoop.epollWait(EpollEventLoop.java:239)
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:256)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:884)
+	at java.lang.Thread.run(Thread.java:748)
+
+
+"ObjectCleanerThread" Id=18 TIMED_WAITING on java.lang.ref.ReferenceQueue$Lock@7653868c
+	at java.lang.Object.wait(Native Method)
+	-  waiting on java.lang.ref.ReferenceQueue$Lock@7653868c
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:144)
+	at io.netty.util.internal.ObjectCleaner$1.run(ObjectCleaner.java:54)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+
+
+"DestroyJavaVM" Id=16 RUNNABLE
+
+
+"Server thread" Id=13 RUNNABLE
+	at java.util.Spliterator.getExactSizeIfKnown(Spliterator.java:408)
+	at java.util.stream.AbstractPipeline.copyIntoWithCancel(AbstractPipeline.java:497)
+	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:485)
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:471)
+	at java.util.stream.MatchOps$MatchOp.evaluateSequential(MatchOps.java:230)
+	at java.util.stream.MatchOps$MatchOp.evaluateSequential(MatchOps.java:196)
+	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.util.stream.ReferencePipeline.noneMatch(ReferencePipeline.java:459)
+	...
+
+
+"Server Infinisleeper" Id=14 TIMED_WAITING
+	at java.lang.Thread.sleep(Native Method)
+	at wd$1.run(SourceFile:94)
+
+
+"Snooper Timer" Id=12 WAITING on java.util.TaskQueue@179eba44
+	at java.lang.Object.wait(Native Method)
+	-  waiting on java.util.TaskQueue@179eba44
+	at java.lang.Object.wait(Object.java:502)
+	at java.util.TimerThread.mainLoop(Timer.java:526)
+	at java.util.TimerThread.run(Timer.java:505)
+
+
+"Signal Dispatcher" Id=4 RUNNABLE
+
+
+"Finalizer" Id=3 WAITING on java.lang.ref.ReferenceQueue$Lock@27711f6c
+	at java.lang.Object.wait(Native Method)
+	-  waiting on java.lang.ref.ReferenceQueue$Lock@27711f6c
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:144)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:165)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:216)
+
+
+"Reference Handler" Id=2 WAITING on java.lang.ref.Reference$Lock@4396ad9
+	at java.lang.Object.wait(Native Method)
+	-  waiting on java.lang.ref.Reference$Lock@4396ad9
+	at java.lang.Object.wait(Object.java:502)
+	at java.lang.ref.Reference.tryHandlePending(Reference.java:191)
+	at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:153)
+
+
+
+Stacktrace:
+	at wg.run(SourceFile:61)
+	at java.lang.Thread.run(Thread.java:748)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.15.2
+	Minecraft Version ID: 1.15.2
+	Operating System: Linux (amd64) version 4.15.0-91-generic
+	Java Version: 1.8.0_201, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 2382958400 bytes (2272 MB) / 3827302400 bytes (3650 MB) up to 7635730432 bytes (7282 MB)
+	CPUs: 2
+	JVM Flags: 2 total; -Xms1G -Xmx8G
+	Player Count: 2 / 20; [xe['temporalmoose'/17, l='pvpworld', x=-327.28, y=64.33, z=-5.29], xe['BACONWRAP'/51, l='pvpworld', x=-414.61, y=153.30, z=-2.62]]
+	Data Packs: vanilla
+	Is Modded: Unknown (can't tell)
+	Type: Dedicated Server (map_server.txt)
